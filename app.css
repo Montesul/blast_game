@@ -1,0 +1,44 @@
+html {
+    background: rgb(23, 23, 53);
+}
+
+body {
+    margin: 0;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: "head head head"  
+                       "field score score"  
+                       "field score score";
+}
+
+canvas {
+    display: block;
+}
+
+#score {
+    margin: 30px;
+    grid-area: score;
+
+}
+
+#field {
+    margin: 30px;
+    grid-area: field;
+}
+
+#progress {
+    grid-area: head;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    width: 150px;
+    height: auto;
+    margin-left: 100px;
+}
