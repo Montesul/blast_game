@@ -42,3 +42,20 @@ img {
     height: auto;
     margin-left: 100px;
 }
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+#text_mix {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@font-face {
+    font-family: 'Marvin'; 
+    src: url('./font/Marvin.otf');
+}

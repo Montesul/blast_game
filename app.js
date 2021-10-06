@@ -10,7 +10,7 @@ const block = {
     head: 50 * 0.1
 }
 
-const margin = 15
+const margin = 15;
 
 let width, height;
 
@@ -21,8 +21,6 @@ function loadCVS() {
     cvs.width = width,
         cvs.height = height;
 }
-
-loadCVS();
 
 const field = new Image(),
     blockRed = new Image(),
@@ -69,7 +67,9 @@ Rect.prototype = {
         ctx.drawImage(this.el, this.x, this.posY, this.w, this.h);
     },
     moveToPosition: function () {
-        if (this.posY != this.y && this.posY + 8 < this.y) {
+        if (this.posY != this.y && this.posY + 20 < this.y) {
+            this.posY += 20;
+        } else if (this.posY != this.y && this.posY + 8 < this.y) {
             this.posY += 10;
         } else if (this.posY != this.y && this.posY + 2 < this.y) {
             this.posY += 2;
@@ -126,12 +126,10 @@ function loadArrayBlocks() {
             let obj = creatBlock(Math.floor(Math.random() * 10)),
                 y = height - row * (block.height - block.head) - margin - block.height,
                 x = col * block.width + margin;
-            arr[row].push(new Rect(obj.el, x, y, obj.flag, y - 400));
+            arr[row].push(new Rect(obj.el, x, y, obj.flag, y - (cvs.height + 100)));
         }
     }
 }
-
-loadArrayBlocks();
 
 function generationBlock() {
     let obj = creatBlock(Math.floor(Math.random() * 10));
@@ -291,9 +289,6 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-blockYellow.onload = draw;
-
-
 function creatBlock(num) {
     switch (num) {
         case 0:
@@ -309,6 +304,20 @@ function creatBlock(num) {
     }
 }
 
-const buttonMix = document.getElementById('button_mix');
+function loadAllState() {
+    loadCVS();
+    restart();
+    draw();
+}
 
-buttonMix.onclick = loadArrayBlocks;
+let point, mixCount, step;
+
+function restart() {
+    loadArrayBlocks();
+    step = 15;
+    point = 0;
+    mixCount = 3;
+}
+
+
+loadAllState()
